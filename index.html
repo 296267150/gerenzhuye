@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/jquery.fullPage.css">
+    <style>
+        .section {
+            font-size: 60px;
+        }
+		a{
+			text-decoration: none;
+		}
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+		.clear{
+			clear: both;
+		}
+        #menu {
+            width: 100%;
+            height: 50px;
+            position: fixed;
+            left: 0;
+            top: 0;
+            background:#BCD0CE;
+            opacity: 0.6;
+            z-index:99;
+            border-bottom: 1px solid #fff;
+        }
+
+		#menu .menu_left{
+			height: 50px;
+			float: left;
+		}
+		#menu .menu_left .logo{
+			width: 36px;
+			height: 36px;
+			border-radius: 50%;
+			background: red;
+			float: left;
+			margin-top: 7px;
+			margin-left: 20px;
+			background: url(img/logo.jpg) no-repeat center;
+			background-size: 110% 110%;
+			border: 1px solid transparent;
+		}
+		#menu .menu_left .logo:hover{
+			box-shadow: 1px 1px 2px 2px rgba(133,198,204,1);
+			border-color:#687271;
+		}
+		
+		#menu .menu_left .name{
+			float: left;
+			color: #000;
+			font-size: 14px;
+			line-height: 50px;
+			margin-left: 10px;
+		}
+		
+        #menu ul{
+            height: 50px;
+            float: right;
+        }
+        #menu li{
+            width:80px;
+            float: left;
+            text-align: center;
+            line-height: 50px;
+            transition: all 0.5s;
+        }
+        #menu ul li a{
+            color:#000;
+            font-size:14px;
+            line-height:50px;
+            transition: all 1s;
+        }
+        
+        .shouye{
+        	background: url(img/shouye_bg.jpg) no-repeat center;
+        	background-size: 100%;
+        }
+        
+        
+        .two-left{
+            width:50%;
+            height:100%;
+            background:#64ff4e;
+            float:left;
+            transform:translateX(-1000px);
+            transition:.5s all;
+        }
+        .two-right{
+            width:50%;
+            height:100%;
+            background: #ff41de;
+            float:left;
+            transform:translateX(1000px);
+            transition:.5s all;
+        }
+        .shouye h1{
+        	text-align: center;
+        	font-size: 30px;
+        	transition: all 1.5s;
+        }
+        .shouye p{
+        	text-align: center;
+        	font-size: 20px;
+        	color: #000;
+        	font-weight: 600;
+        	line-height: 30px;
+        	transition:1.5s all;
+        }
+        @keyframes fangda{
+        	0%{
+        		transform: scale(0.6);
+        		opacity: 0;
+        	}
+        	60%{
+        		transform: scale(1.4);
+        		opacity: 0.6;
+        	}
+        	100%{
+        		transform: scale(1);
+        		opacity: 1;
+        	}
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <div id="menu">
+    	<div class="menu_left">
+    		<div class="logo"></div>
+    		<div class="name">李鑫</div>
+    	</div>
+        <ul>
+            <li data-menuanchor="p1" class="active"><a href="#p1">首页</a></li>
+            <li data-menuanchor="p2"><a href="#p2">关于我</a></li>
+            <li data-menuanchor="p3"><a href="#p3">心路历程</a></li>
+            <li data-menuanchor="p4"><a href="#p4">专业技能</a></li>
+            <li data-menuanchor="p5"><a href="#p5">我的作品</a></li>
+            <li data-menuanchor="p5"><a href="#p5">联系我</a></li>
+            <div class="clear"></div>
+        </ul>
+    </div>
+    <div class="section shouye">
+    	<h1>坚持不懈的努力，注定造就不平凡的自己</h1>
+    	<p style="margin-top: 40px;">人生只有一条路不能选择</p>
+    	<p>那就是放弃的路</p>
+    	<p>人生只有一条路不能放弃</p>
+    	<p>那就是成长的路</p>
+    </div>
+    <div class="section">
+        <div class="two-left"></div>
+        <div class="two-right"></div>
+    </div>
+    <div class="section">3</div>
+    <div class="section">4</div>
+    <div class="section">5</div>
+    <div class="section">5</div>
+</div>
+</body>
+<script src="js/jquery-3.2.1.js"></script>
+<script src="js/jquery.easing.min.js"></script>
+<script src="js/jquery.fullPage.min.js"></script>
+<script>
+	$("#menu ul li").mouseover(function(){
+		$(this).children("a").css("transform","rotate(45deg)");
+	})
+    $("#container").fullpage({
+        verticalCentered: true,
+        anchors: ["p1", "p2", "p3", "p4", "p5"],
+        scrollingSpeed: 1000,
+        navigation: true,
+        navigationPosition: "right",
+        navigationTooltips: ["111", "222", "333", "444"],
+        continuousVertical: true,
+        fixedElements:"#menu",
+        menu:"#menu",
+        afterLoad:function(anchor,index){
+        	if(index===1){
+        		$(".shouye h1").css("animation","fangda 1.5s linear");
+        		$(".shouye p:nth-child(2n-1)").css({"transform":"translateX(0)","opacity":"1"});
+        		$(".shouye p:nth-child(2n)").css({"transform":"translateX(0)","opacity":"1"});
+        	}
+            if(index===2){
+             $(".two-left").css("transform","translateX(0)");
+             $(".two-right").css("transform","translateX(0)");
+            }
+        },
+        onLeave:function(index){
+        	if(index===1){
+        		$(".shouye p:nth-child(2n-1)").css({"transform":"translateX(-600px)","opacity":"0"});
+        		$(".shouye p:nth-child(2n)").css({"transform":"translateX(600px)","opacity":"0"});
+        	}
+            if(index===2){
+                $(".two-left").css("transform","translateX(-1000px)");
+                $(".two-right").css("transform","translateX(1000px)");
+            }
+        },
+        
+        
+    });
+</script>
+</html>
