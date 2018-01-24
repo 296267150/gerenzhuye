@@ -85,24 +85,26 @@
         	background: url(img/shouye_bg.jpg) no-repeat center;
         	background-size: 100%;
         }
-        
-        
-        .two-left{
-            width:50%;
-            height:100%;
-            background:#64ff4e;
-            float:left;
-            transform:translateX(-1000px);
-            transition:.5s all;
+        .guanyu{
+        	background: url(img/paobu.jpg) no-repeat center;
+        	background-size: 100%;
         }
-        .two-right{
-            width:50%;
-            height:100%;
-            background: #ff41de;
-            float:left;
-            transform:translateX(1000px);
-            transition:.5s all;
+        .nav_yi{
+        	position: relative;
+        	width: 1000px;
+        	height: 48px;
+        	margin: -200px auto 0 auto;
         }
+        .nav_yi h1{
+        	width: 200px;
+        	font-family: "微软雅黑";
+        	color: #fff;
+        	background: rgba(0,0,0,0.6);
+        	text-align: center;
+        	font-size: 36px;
+        	font-weight: normal;
+        }
+        
         .shouye h1{
         	text-align: center;
         	font-size: 30px;
@@ -156,9 +158,11 @@
     	<p>人生只有一条路不能放弃</p>
     	<p>那就是成长的路</p>
     </div>
-    <div class="section">
-        <div class="two-left"></div>
-        <div class="two-right"></div>
+    <div class="section guanyu">
+    	<div class="nav_yi">
+    		<h1>关于我</h1>
+    		<span class="line"></span>
+    	</div>
     </div>
     <div class="section">3</div>
     <div class="section">4</div>
@@ -174,7 +178,6 @@
 		$(this).children("a").css("transform","rotate(45deg)");
 	})
     $("#container").fullpage({
-        verticalCentered: true,
         anchors: ["p1", "p2", "p3", "p4", "p5"],
         scrollingSpeed: 1000,
         navigation: true,
@@ -190,8 +193,7 @@
         		$(".shouye p:nth-child(2n)").css({"transform":"translateX(0)","opacity":"1"});
         	}
             if(index===2){
-             $(".two-left").css("transform","translateX(0)");
-             $(".two-right").css("transform","translateX(0)");
+            
             }
         },
         onLeave:function(index){
@@ -200,8 +202,7 @@
         		$(".shouye p:nth-child(2n)").css({"transform":"translateX(600px)","opacity":"0"});
         	}
             if(index===2){
-                $(".two-left").css("transform","translateX(-1000px)");
-                $(".two-right").css("transform","translateX(1000px)");
+                
             }
         },
         
